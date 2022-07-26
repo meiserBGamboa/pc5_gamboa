@@ -14,8 +14,14 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - run: pip pwd 
-      - run: pip install -r requirements.txt 
+      - name: Run with setup-python 3.10
+        uses: ./
+        with:
+          python-version: "3.10"
+      
+      - name: install requirements
+        run: pip install -r ./requirements.txt 
+
       - run: python server.py build
 
       - name: Deploy
