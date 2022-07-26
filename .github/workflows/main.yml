@@ -13,7 +13,7 @@ jobs:
       contents: write
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
-    step:
+    steps:
       - run: pip install -r requirements.txt 
       - run: python server.py build
 
